@@ -8,7 +8,7 @@
 import sys
 from typing import (
     List, Iterator, overload, Callable, Tuple, Sequence, Dict,
-    Generic, AnyStr, Match, Pattern, Any, Optional, Union
+    Generic, AnyStr, Match, Pattern, Optional, Union
 )
 
 # ----- re variables and constants -----
@@ -102,9 +102,9 @@ def split(pattern: Pattern[AnyStr], string: AnyStr,
           maxsplit: int = ..., flags: _FlagsType = ...) -> List[AnyStr]: ...
 
 @overload
-def findall(pattern: AnyStr, string: AnyStr, flags: _FlagsType = ...) -> List[Any]: ...
+def findall(pattern: AnyStr, string: AnyStr, flags: _FlagsType = ...) -> Union[List[AnyStr], List[Tuple[AnyStr, ...]]]: ...
 @overload
-def findall(pattern: Pattern[AnyStr], string: AnyStr, flags: _FlagsType = ...) -> List[Any]: ...
+def findall(pattern: Pattern[AnyStr], string: AnyStr, flags: _FlagsType = ...) -> Union[List[AnyStr], List[Tuple[AnyStr, ...]]]: ...
 
 # Return an iterator yielding match objects over all non-overlapping matches
 # for the RE pattern in string. The string is scanned left-to-right, and
